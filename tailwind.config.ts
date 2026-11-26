@@ -1,190 +1,106 @@
-import plugin from 'tailwindcss/plugin';
-import { colors } from './nuxt-config/tailwind';
-import defaultTheme from 'tailwindcss/defaultTheme';
-import type { Config } from 'tailwindcss';
+import tailwindAnimate from 'tailwindcss-animate';
 
-const extraSizings = {
-  btn: '6rem',
-  12: '3rem',
-  14: '3.5rem',
-  '4xs': '10rem',
-  '3xs': '12rem',
-  '2xs': '16rem',
-  xs: '20rem',
-  sm: '24rem',
-  md: '28rem',
-  lg: '32rem',
-  xl: '36rem',
-  '2xl': '42rem',
-  '3xl': '48rem',
-  '4xl': '56rem',
-  '5xl': '64rem',
-  '6xl': '72rem',
-};
-
-export default <Partial<Config>>{
-  content: [
-    './components/**/*.{vue,js,ts,jsx,tsx}',
-    './layouts/**/*.{vue,js,ts,jsx,tsx}',
-    './pages/**/*.{vue,js,ts,jsx,tsx}',
-    './utils/**/*.{js,ts,vue}',
-    './app.vue',
-  ],
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
 
   theme: {
-    extend: {
-      colors: {
-        ...colors,
-      },
-
-      divideColor: {
-        DEFAULT: '#202431',
-      },
-
-      borderColor: {
-        DEFAULT: '#202431',
-      },
-
-      border: {
-        DEFAULT: '#202431',
-      },
-
-      height: {
-        footer: '2.5rem',
-        orders: '10rem',
-        trades: '26rem',
-        header: '56px',
-        subHeader: '60px',
-        screenMinusHeader: 'calc(100% - 56px)',
-        vhMinusHeader: 'calc(100vh - 83px)',
-        ...extraSizings,
-      },
-
+    container: {
+      center: true,
+      padding: '2rem',
       screens: {
-        xs: '480px',
-        sm: '640px',
-        md: '768px',
-        '2md': '800px',
-        '3md': '840px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1366px',
-        '3xl': '1440px',
-        '4xl': '1536px',
-        '5xl': '1681px',
+        '2xl': '1400px',
       },
-
-      fontSize: {
-        '2xs': ['0.625rem', { lineHeight: '1.5' }], // 10px
-        '3xs': ['0.5rem', { lineHeight: '1.5' }], // 8px
-        xs: ['0.75rem', { lineHeight: '1.5' }], // 12px
-        sm: ['0.875rem', { lineHeight: '1.5' }], // 14px
-        base: ['1rem', { lineHeight: '1.5' }], // 16px
-        xl: ['1.25rem', { lineHeight: '1.5' }], // 20px
-        '2xl': ['1.5rem', { lineHeight: '1.5' }], // 24px
-        '3xl': ['1.875rem', { lineHeight: '1.5' }], // 30px
-        footer: '0.85rem',
+    },
+    fontSize: {
+      xs: '1.05rem', // 0.9 * 1.20
+      sm: '1.2rem', // 1.07 * 1.20
+      base: '1.38rem', // 1.18 * 1.20
+      lg: '1.46rem', // 1.24 * 1.20
+      xl: '1.6rem', // 1.38 * 1.20
+      '1.5xl': '1.7rem', // 1.5 * 1.20
+      '2xl': '2.18rem', // 1.82 * 1.20
+      '3xl': '2.66rem', // 2.22 * 1.20
+      '4xl': '3.19rem', // 2.66 * 1.20
+      '5xl': '4.27rem', // 3.56 * 1.20
+      '6xl': '5.33rem', // 4.44 * 1.20
+      '7xl': '6.4rem', // 5.33 * 1.20
+      '8xl': '8.52rem', // 7.1 * 1.20
+      '9xl': '11.4rem', // 9.5 * 1.20
+    },
+    extend: {
+      transitionDuration: {
+        DEFAULT: '333ms',
       },
-
-      flex: {
-        2: '2 2 0%',
+      transitionTimingFunction: {
+        DEFAULT: 'ease-in-out',
       },
-
-      rotate: {
-        135: '135deg',
+      colors: {
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
+        background: 'var(--background)',
+        foreground: 'hsl(var(--foreground))',
+        sidebar: 'var(--sidebar)',
+        primary: {
+          DEFAULT: 'var(--primary)',
+          foreground: 'var(--primary-foreground)',
+        },
+        secondary: {
+          DEFAULT: 'var(--secondary)',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'var(--muted)',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'var(--card)',
+          foreground: 'hsl(var(--card-foreground))',
+        },
       },
-
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['Azeret Mono', ...defaultTheme.fontFamily.mono],
-        rubik: ['Rubik One'],
-        orbitron: ['Orbitron'],
-        pingFang: ['PingFang SC'],
-        proximaNova: ['Proxima Nova'],
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
-
-      lineHeight: {
-        14: '3.5rem',
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 },
+        },
+        'collapsible-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-collapsible-content-height)' },
+        },
+        'collapsible-up': {
+          from: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: 0 },
+        },
       },
-
-      maxHeight: {
-        ...extraSizings,
-      },
-
-      maxWidth: {
-        ...extraSizings,
-      },
-
-      minWidth: {
-        ...extraSizings,
-      },
-
-      minHeight: {
-        ...extraSizings,
-        screenMinusHeader: 'calc(100% - 56px)',
-        vhMinusHeader: 'calc(100vh - 83px)',
-      },
-
-      width: {
-        ...extraSizings,
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'collapsible-down': 'collapsible-down 0.2s ease-in-out',
+        'collapsible-up': 'collapsible-up 0.2s ease-in-out',
       },
     },
   },
-
-  plugins: [
-    plugin(({ addUtilities, addComponents, theme }) => {
-      addUtilities({
-        '.error-message': {
-          fontSize: theme('fontSize.xs'),
-          color: colors.red[500],
-        },
-        '.field-label': {
-          fontSize: theme('fontSize.xs'),
-          fontWeight: theme('fontWeight.semibold'),
-          color: 'white',
-        },
-        '.tab-field': {
-          fontSize: theme('fontSize.sm'),
-          fontWeight: theme('fontWeight.bold'),
-          color: colors.coolGray[400],
-        },
-        '.tab-label': {
-          fontSize: theme('fontSize.xs'),
-          fontWeight: theme('fontWeight.medium'),
-          color: colors.coolGray[300],
-          userSelect: 'none',
-          cursor: 'pointer',
-        },
-        '.tab-label:hover': {
-          backgroundColor: colors.brand[800],
-        },
-        '.portfolio-title': {
-          fontSize: theme('fontSize.2xl'),
-          fontWeight: theme('fontWeight.bold'),
-        },
-        '.table-label': {
-          fontSize: theme('fontSize.xs'),
-          color: colors.coolGray[400],
-        },
-      });
-
-      addComponents({
-        '.card': {
-          border: `1px solid ${colors.brand[750]}`,
-          borderRadius: theme('borderRadius.md'),
-          backgroundColor: colors.brand[875],
-        },
-
-        '.card-opaque': {
-          border: `1px solid ${colors.brand[800]}`,
-          borderRadius: theme('borderRadius.md'),
-          backgroundColor: 'transparent',
-        },
-
-        '.card-opaque:hover': {
-          backgroundColor: colors.brand[800],
-        },
-      });
-    }),
-  ],
+  plugins: [tailwindAnimate],
 };

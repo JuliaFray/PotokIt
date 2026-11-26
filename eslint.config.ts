@@ -1,6 +1,5 @@
 // @ts-check
 import withNuxt from './.nuxt/eslint.config.mjs';
-import perfectionist from 'eslint-plugin-perfectionist';
 
 const sortGroups = {
   groups: [
@@ -60,27 +59,5 @@ export default withNuxt({
     '@typescript-eslint/no-dynamic-delete': 'off',
     '@typescript-eslint/no-empty-object-type': 'off',
     '@typescript-eslint/no-unsafe-function-type': 'off',
-
-    ...perfectionist.configs['recommended-line-length'].rules,
-
-    'perfectionist/sort-enums': ['off', orderParams],
-    'perfectionist/sort-objects': ['off', orderParams],
-    'perfectionist/sort-modules': ['off', orderParams],
-    'perfectionist/sort-exports': ['warn', orderParams],
-    'perfectionist/sort-interfaces': ['warn', orderParams],
-    'perfectionist/sort-union-types': ['warn', orderParams],
-    'perfectionist/sort-object-types': ['warn', orderParams],
-    'perfectionist/sort-named-exports': ['warn', orderParams],
-    'perfectionist/sort-named-imports': ['warn', orderParams],
-    'perfectionist/sort-array-includes': ['warn', orderParams],
-    'perfectionist/sort-imports': [
-      'warn',
-      {
-        ...orderParams,
-        newlinesBetween: 'never',
-        groups: sortGroups.groups,
-        customGroups: sortGroups.customGroups,
-      },
-    ],
   },
 });
