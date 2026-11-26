@@ -1,0 +1,32 @@
+{
+  "name": "JsFreiCRM",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^4.7.0",
+    "tailwindcss": "^4.3.5",
+    "vue": "^3.5.45",
+    "vue-router": "^5.4.0"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.17.0",
+    "@types/node": "^24.19.2",
+    "autoprefixer": "latest",
+    "typescript": "~6.0.3",
+    "vue-tsc": "^3.3.14",
+    "eslint": "^10.15.0",
+    "eslint-plugin-perfectionist": "4.15.0",
+    "prettier": "3.6.2",
+    "postcss": "8.5.6"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
